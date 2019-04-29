@@ -3,7 +3,7 @@ FROM openjdk:8-stretch
 EXPOSE 50000
 
 RUN apt -y update
-RUN apt -qq -y install python3 apt-transport-https
+RUN apt -qq -y install python3 apt-transport-https maven
 
 RUN echo "deb https://dev.monetdb.org/downloads/deb/ stretch monetdb\ndeb-src https://dev.monetdb.org/downloads/deb/ stretch monetdb" > /etc/apt/sources.list.d/monetdb.list
 
