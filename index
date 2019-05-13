@@ -13,6 +13,7 @@ args, unknown = parser.parse_known_args()
 
 # Iterate over collections
 for collection in args.json["collections"]:
+    
     subprocess.run("""
         java -cp anserini.jar io.anserini.index.IndexCollection
             -collection TrecCollection -generator JsoupGenerator
@@ -20,3 +21,15 @@ for collection in args.json["collections"]:
             -input {1}
             -storePositions -storeDocvectors -storeRawDocs
     """.format(collection["name"], collection["path"]).split())
+
+    subprocess.run("""
+        /work/olddog/target/appassembler/bin/nl.ru.convert.Convert
+        -index /work/{0}
+        -docs docs
+        -dict dict
+        -terms terms
+    """.format(collection["name"]).split())
+
+    subprocess.run('mv dict /tmp/dict'.split())
+    subprocess.run('mv terms /tmp/terms'.split())
+    subprocess.run('mv docs /tmp/docs'.split())
