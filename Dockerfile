@@ -15,7 +15,6 @@ RUN apt -qq -y install monetdb5-sql monetdb-client
 # Copy scripts into place
 COPY init init
 COPY index index
-COPY interact interact
 COPY search search
 
 # Set working directory
