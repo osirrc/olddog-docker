@@ -14,7 +14,10 @@ args, unknown = parser.parse_known_args()
 topic_path = args.json['topic']['path']
 out_file_name = args.json['opts']['out_file_name']
 
-# Iterate over collections
+# Recreate socketfiles by creating new farm
+subprocess.run('monetdbd create /work/mydbfarm'.split())
+subprocess.run('monetdbd start /work/mydbdfarm'.split())
+
 subprocess.run("""
     python3 /work/olddog/src/main/python/search_collection.py
         --terms /tmp/terms
