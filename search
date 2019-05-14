@@ -16,7 +16,7 @@ out_file_name = args.json['opts']['out_file_name']
 
 # Iterate over collections
 subprocess.run("""
-    /work/olddog/src/main/python/search_collection.py
+    python3 /work/olddog/src/main/python/search_collection.py
         --terms /tmp/terms
         --dict /tmp/dict
         --docs /tmp/docs
