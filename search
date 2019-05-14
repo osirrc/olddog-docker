@@ -23,4 +23,4 @@ subprocess.run("""
         --docs /tmp/docs
         --filename {}
         --output /output/{}
-""".format(topic_path, out_file_name).split()
+""".format(topic_path, out_file_name).split())
