@@ -4,3 +4,5 @@ wget http://central.maven.org/maven2/io/anserini/anserini/0.4.0/anserini-0.4.0-f
 git clone https://github.com/chriskamphuis/olddog.git
 cd olddog
 mvn clean package appassembler:assemble
+monetdbd create /work/mydbfarm
+monetdbd start /work/mydbfarm
