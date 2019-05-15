@@ -15,7 +15,7 @@ topic_path = args.json['topic']['path']
 out_file_name = args.json['opts']['out_file_name']
 
 # Recreate socketfiles by creating new farm
-subprocess.run('monetdbd create /work/mydbfarm'.split())
+subprocess.run('monetdbd create /work/mydbdfarm'.split())
 subprocess.run('monetdbd start /work/mydbdfarm'.split())
 subprocess.run('monetdb create robust04'.split())
 subprocess.run('monetdb release robust04'.split())
