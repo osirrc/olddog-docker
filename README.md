@@ -37,7 +37,7 @@ python run.py search \
 
 The Anserini image supports the following retrieval models:
 
-+ **BM25** (conjunctive variant): k1=0.9, b=0.4 (Robertson et al., 1995) 
++ **BM25** (conjunctive variant): k1=1.25, b=0.75 (Robertson et al., 1995) 
 
 ## Expected Results
 
