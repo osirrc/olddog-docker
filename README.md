@@ -1,4 +1,4 @@
-# OldDog OSIRRC Docker Image
+# OSIRRC Docker Image for OldDog
 
 [![Docker Build Status](https://img.shields.io/docker/cloud/build/osirrc2019/olddog.svg)](https://hub.docker.com/r/osirrc2019/olddog)
 
