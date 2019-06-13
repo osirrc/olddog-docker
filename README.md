@@ -35,7 +35,7 @@ python run.py search \
 
 ## Retrieval Methods
 
-The Anserini image supports the following retrieval models:
+The OldDog image supports the following retrieval models:
 
 + **BM25** (conjunctive variant): k1=1.25, b=0.75 (Robertson et al., 1995) 
 
