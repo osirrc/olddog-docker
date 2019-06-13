@@ -1,6 +1,5 @@
 # Olddog OSIRRC Docker Image
 
-[![Build status](https://travis-ci.com/osirrc/olddog-docker.svg?branch=master)](https://travis-ci.com/osirrc/olddog-docker)
 [![Docker Build Status](https://img.shields.io/docker/cloud/build/osirrc2019/olddog.svg)](https://hub.docker.com/r/osirrc2019/olddog)
 
 [**Chris Kamphuis**](https://github.com/chriskamphuis) and [**Arjen de Vries**](https://github.com/arjenpdevries)
