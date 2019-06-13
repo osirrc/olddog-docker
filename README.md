@@ -4,7 +4,7 @@
 
 [**Chris Kamphuis**](https://github.com/chriskamphuis) and [**Arjen de Vries**](https://github.com/arjenpdevries)
 
-This is the docker image for the [Olddog](https://github.com/chriskamphuis/olddog) project (based on work by M&uuml;hleisen et al.)  conforming to the [OSIRRC_jig](https://github.com/osirrc/jig/) for the [Open-Source IR Replicability Challenge (OSIRRC) at SIGIR 2019](https://osirrc.github.io/osirrc2019/).
+This is the docker image for the [Olddog](https://github.com/chriskamphuis/olddog) project (based on work by M&uuml;hleisen et al.)  conforming to the [OSIRRC jig](https://github.com/osirrc/jig/) for the [Open-Source IR Replicability Challenge (OSIRRC) at SIGIR 2019](https://osirrc.github.io/osirrc2019/).
 This image is available on [Docker Hub](https://hub.docker.com/r/osirrc2019/olddog
 ) has been tested with the jig at commit [efc94e9](https://github.com/osirrc/jig/commit/efc94e90962ab7368bb8dacbbda341a3f3409157) (13/07/2019).
 
@@ -85,5 +85,5 @@ The retrieval run is performed and output is placed in `/output` for the `jig` t
 
 ## Reviews
 
-+ Documentation reviewed at commit [xxxxx](xxxxx) (mm/dd/yyyy) by [xxxxx](xxxxx)
++ Documentation reviewed at commit [d3a9750](https://github.com/osirrc/olddog-docker/commit/d3a9750e74f815c12fe66dbd3e81e598b99ef9e5) (6/13/2019) by [Jimmy Lin](https://github.com/lintool/)
 
