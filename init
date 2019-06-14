@@ -1,6 +1,7 @@
 #!/bin/bash
 
 wget http://central.maven.org/maven2/io/anserini/anserini/0.4.0/anserini-0.4.0-fatjar.jar -O anserini.jar
-git clone https://github.com/chriskamphuis/olddog.git
+git clone https://github.com/chriskamphuis/olddog-dev.git
+mv olddog-dev olddog
 cd olddog
 mvn clean package appassembler:assemble

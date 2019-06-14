@@ -15,16 +15,10 @@ topic_path = args.json['topic']['path']
 out_file_name = args.json['opts']['out_file_name']
 
 # Recreate socketfiles by creating new farm
-subprocess.run('monetdbd create /work/mydbdfarm'.split())
-subprocess.run('monetdbd start /work/mydbdfarm'.split())
-subprocess.run('monetdb create robust04'.split())
-subprocess.run('monetdb release robust04'.split())
+subprocess.run('monetdbd start /work/mydbfarm'.split())
 
 subprocess.run("""
     python3 /work/olddog/src/main/python/search_collection.py
-        --terms /tmp/terms
-        --dict /tmp/dict
-        --docs /tmp/docs
         --filename {}
         --output /output/{}
 """.format(topic_path, out_file_name).split())
