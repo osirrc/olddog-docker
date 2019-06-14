@@ -27,8 +27,8 @@ The following `jig` command can be used to perform a retrieval run on the collec
 python run.py search \
   --repo osirrc2019/olddog \
   --output $(pwd)/out \
-  --qrels qrels/qrels.robust2004.txt \
-  --topic topics/robust04.301-450.601-700.txt \
+  --qrels qrels/qrels.robust04.txt \
+  --topic topics/topics.robust04.txt \
   --collection robust04 \
   --opts out_file_name="run.bm25.robust04"
 ```
