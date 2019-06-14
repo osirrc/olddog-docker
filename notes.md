@@ -1,9 +1,6 @@
 # Quick Start
 
-Instructions for running OldDog on the OSIRRC 2019 `jig`.
-
-+ Supported test collections: `robust04`
-+ Supported hooks: `init`, `index`, `search`. `interactive`
+Instructions for evaluating TREC8 using OldDog on the OSIRRC 2019 `jig`.
 
 ## Preliminaries
 
@@ -24,14 +21,19 @@ Install the `jig`:
     cd jig
     pip3 install -r requirements.txt --user
 
-Build the docker image locally:
+Ugly setup, `jig` expects `trec_eval/trec_eval` to be the evaluation program executable...
+
+    mkdir trec_eval
+    ln -s /usr/local/bin/trec_eval trec_eval
+
+Build the OldDog docker image (locally):
 
     git clone git@github.com:osirrc2019/olddog-docker.git
     docker build -t osirrc2019/olddog .
 
 ### Prepare
 
-The following `jig` command can be used to index TREC disks 4/5 for `robust04`:
+Index TREC disks 4/5 for `robust04`:
 
     python3 run.py prepare \
       --repo osirrc2019/olddog \
@@ -41,15 +43,17 @@ _TODO: move database load to this stage!_
 
 ### Search
 
-The following `jig` command can be used to perform a retrieval run on the collection with the `robust04` test collection.
+Running a TREC8 retrieval experiment:
 
     python3 run.py search \
       --repo osirrc2019/olddog \
       --output $(pwd)/out \
-      --qrels qrels/qrels.robust2004.txt \
-      --topic topics/robust04.401-450.txt \
+      --qrels qrels/qrels.401-450.txt \
+      --topic topics/topics.401-450.txt \
       --collection robust04 \
-      --opts out_file_name="run.bm25.trec8"
+      --opts out_file_name="trec8"
+
+_TODO: fix qrels file - wrong collection for TREC8._
 
 ### SEE ALSO
 
