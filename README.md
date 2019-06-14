@@ -1,10 +1,10 @@
-# Olddog OSIRRC Docker Image
+# OSIRRC Docker Image for OldDog
 
 [![Docker Build Status](https://img.shields.io/docker/cloud/build/osirrc2019/olddog.svg)](https://hub.docker.com/r/osirrc2019/olddog)
 
 [**Chris Kamphuis**](https://github.com/chriskamphuis) and [**Arjen de Vries**](https://github.com/arjenpdevries)
 
-This is the docker image for the [Olddog](https://github.com/chriskamphuis/olddog) project (based on work by M&uuml;hleisen et al.)  conforming to the [OSIRRC_jig](https://github.com/osirrc/jig/) for the [Open-Source IR Replicability Challenge (OSIRRC) at SIGIR 2019](https://osirrc.github.io/osirrc2019/).
+This is the docker image for the [OldDog](https://github.com/chriskamphuis/olddog) project (based on work by M&uuml;hleisen et al.)  conforming to the [OSIRRC jig](https://github.com/osirrc/jig/) for the [Open-Source IR Replicability Challenge (OSIRRC) at SIGIR 2019](https://osirrc.github.io/osirrc2019/).
 This image is available on [Docker Hub](https://hub.docker.com/r/osirrc2019/olddog
 ) has been tested with the jig at commit [efc94e9](https://github.com/osirrc/jig/commit/efc94e90962ab7368bb8dacbbda341a3f3409157) (13/07/2019).
 
@@ -27,15 +27,15 @@ The following `jig` command can be used to perform a retrieval run on the collec
 python run.py search \
   --repo osirrc2019/olddog \
   --output $(pwd)/out \
-  --qrels qrels/qrels.robust2004.txt \
-  --topic topics/robust04.301-450.601-700.txt \
+  --qrels qrels/qrels.robust04.txt \
+  --topic topics/topics.robust04.txt \
   --collection robust04 \
   --opts out_file_name="run.bm25.robust04"
 ```
 
 ## Retrieval Methods
 
-The Anserini image supports the following retrieval models:
+The OldDog image supports the following retrieval models:
 
 + **BM25** (conjunctive variant): k1=1.25, b=0.75 (Robertson et al., 1995) 
 
@@ -64,12 +64,12 @@ The `Dockerfile` installs dependencies (`python3`, `monetdb`, etc.), copies scri
 
 ### init
 
-The `init` [script](init) is a bash script (via the `#!/bin/bash` she-bang) that invokes `wget` to download an `anserini` JAR from Maven Central. Then it clones the `olddog` project from github, which then is build using maven.
+The `init` [script](init) is a bash script (via the `#!/bin/bash` she-bang) that invokes `wget` to download an `anserini` JAR from Maven Central. Then it clones the `OldDog` project from github, which then is build using maven.
 
 ### index
 The `index` Python [script](index) (via the `#!/usr/bin/python3` she-bang) reads a JSON string (see [here](https://github.com/osirrc/jig#index)) containing at least one collection to index (including the name, path, and format).
 The collection is indexed using Anserini (Yang et al., 2017) and placed in a directory, with the same name as the collection, in the working dir (i.e., `/work/robust04`).
-After the Lucene index has been created, the olddog software uses this index to creates csv files from it that can be loaded in the monetdb (Boncz, 2002)  column store.
+After the Lucene index has been created, the OldDog software uses this index to creates csv files from it that can be loaded in the monetdb (Boncz, 2002)  column store.
 At this point, `jig` takes a snapshot and the indexed collections are persisted for the `search` hook.
 
 ### search
@@ -85,5 +85,5 @@ The retrieval run is performed and output is placed in `/output` for the `jig` t
 
 ## Reviews
 
-+ Documentation reviewed at commit [xxxxx](xxxxx) (mm/dd/yyyy) by [xxxxx](xxxxx)
++ Documentation reviewed at commit [d3a9750](https://github.com/osirrc/olddog-docker/commit/d3a9750e74f815c12fe66dbd3e81e598b99ef9e5) (6/13/2019) by [Jimmy Lin](https://github.com/lintool/)
 
