@@ -54,6 +54,17 @@ P@5                                     | BM25      |
 :---------------------------------------|-----------|
 [TREC 2004 Robust Track Topics](http://trec.nist.gov/data/robust/04.testset.gz)| 0.2578    |
 
+_Note that the scores are lower than regular bm25 because of conjunctive query processing; all query terms need to appear in a document in order for the document to be considered relevant. Without this restriction you would find the results listed below. These can however as of now, not be produced with a jig command._
+
+### robust04
+
+MAP                                     | BM25      | 
+:---------------------------------------|-----------|
+[TREC 2004 Robust Track Topics](http://trec.nist.gov/data/robust/04.testset.gz)| 0.2434    |
+
+P@5                                     | BM25      | 
+:---------------------------------------|-----------|
+[TREC 2004 Robust Track Topics](http://trec.nist.gov/data/robust/04.testset.gz)| 0.2985    |
 
 ## Implementation
 
@@ -71,11 +82,12 @@ The `init` [script](init) is a bash script (via the `#!/bin/bash` she-bang) that
 The `index` Python [script](index) (via the `#!/usr/bin/python3` she-bang) reads a JSON string (see [here](https://github.com/osirrc/jig#index)) containing at least one collection to index (including the name, path, and format).
 The collection is indexed using Anserini (Yang et al., 2017) and placed in a directory, with the same name as the collection, in the working dir (i.e., `/work/robust04`).
 After the Lucene index has been created, the OldDog software uses this index to creates csv files from it that can be loaded in the monetdb (Boncz, 2002)  column store.
+A monetDB databse is created and the csv-files are loaded into the database.
+This is followed by removing the Lucene index so commiting the image takes less time.
 At this point, `jig` takes a snapshot and the indexed collections are persisted for the `search` hook.
 
 ### search
 The `search` [script](search) reads a JSON string (see [here](https://github.com/osirrc/jig#search)) containing the collection name (to map back to the index directory from the `index` hook) and topic path, among other options.
-A monetDB databse is created and the csv-files are loaded into the database.
 The retrieval run is performed and output is placed in `/output` for the `jig` to evaluate using `trec_eval`.
 
 ## References
