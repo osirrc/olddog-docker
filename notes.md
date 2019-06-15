@@ -43,17 +43,25 @@ _TODO: move database load to this stage!_
 
 ### Search
 
+Running a TREC7 retrieval experiment:
+
+    python3 run.py search \
+      --repo osirrc2019/olddog \
+      --output $(pwd)/out \
+      --qrels qrels/qrels.trec7.adhoc.parts1-5 \
+      --topic topics/topics.351-400.txt \
+      --collection robust04 \
+      --opts out_file_name="trec7"
+
 Running a TREC8 retrieval experiment:
 
     python3 run.py search \
       --repo osirrc2019/olddog \
       --output $(pwd)/out \
-      --qrels qrels/qrels.401-450.txt \
+      --qrels qrels/qrels.trec8.adhoc.parts1-5 \
       --topic topics/topics.401-450.txt \
       --collection robust04 \
       --opts out_file_name="trec8"
-
-_TODO: fix qrels file - wrong collection for TREC8._
 
 ### SEE ALSO
 
