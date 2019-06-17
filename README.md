@@ -18,7 +18,8 @@ The following `jig` command can be used to index TREC disks 4/5 for `robust04`:
 
 ```
 python run.py prepare \                                                         
-  --repo osirrc2019/olddog \                                                       
+  --repo osirrc2019/olddog \             
+  --tag v0.2.0 \
   --collections robust04=/path/to/disk45=trectext
 ```
 
@@ -27,6 +28,7 @@ The following `jig` command can be used to perform a retrieval run on the collec
 ```
 python run.py search \
   --repo osirrc2019/olddog \
+  --tag v0.2.0 \
   --output $(pwd)/out \
   --qrels qrels/qrels.robust04.txt \
   --topic topics/topics.robust04.txt \
@@ -102,5 +104,5 @@ We can not guarantee that version v0.1.0 still works. This version cloned the Ol
 
 ## Reviews
 
-+ Documentation reviewed at commit [d3a9750](https://github.com/osirrc/olddog-docker/commit/d3a9750e74f815c12fe66dbd3e81e598b99ef9e5) (6/13/2019) by [Jimmy Lin](https://github.com/lintool/)
-
++ Documentation reviewed at commit [`d3a9750`](https://github.com/osirrc/olddog-docker/commit/d3a9750e74f815c12fe66dbd3e81e598b99ef9e5) (2019-06-13) by [Jimmy Lin](https://github.com/lintool/)
++ Documentation reviewed at commit [`dd53191`](https://github.com/osirrc/olddog-docker/commit/9275f8b72b518fc3ae35906ce1d7059e6dd53191) (2019-06-17) by [r-clancy](https://github.com/r-clancy/).
