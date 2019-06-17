@@ -7,7 +7,7 @@
 
 This is the docker image for the [OldDog](https://github.com/chriskamphuis/olddog) project (based on work by M&uuml;hleisen et al.)  conforming to the [OSIRRC jig](https://github.com/osirrc/jig/) for the [Open-Source IR Replicability Challenge (OSIRRC) at SIGIR 2019](https://osirrc.github.io/osirrc2019/).
 This image is available on [Docker Hub](https://hub.docker.com/r/osirrc2019/olddog
-) has been tested with the jig at commit [efc94e9](https://github.com/osirrc/jig/commit/efc94e90962ab7368bb8dacbbda341a3f3409157) (13/07/2019).
+) has been tested with the jig at commit [ee62fa8](https://github.com/osirrc/jig/commit/ee62fa88a2bbfc38dfa0ac5c84c676028c73991e) (06/17/2019).
 
 + Supported test collections: `robust04`
 + Supported hooks: `init`, `index`, `search` 
@@ -89,6 +89,10 @@ At this point, `jig` takes a snapshot and the indexed collections are persisted 
 ### search
 The `search` [script](search) reads a JSON string (see [here](https://github.com/osirrc/jig#search)) containing the collection name (to map back to the index directory from the `index` hook) and topic path, among other options.
 The retrieval run is performed and output is placed in `/output` for the `jig` to evaluate using `trec_eval`.
+
+## Notes
+- re:v0.1.0
+We can not guarantee that version v0.1.0 still works. This version cloned the OldDog github repository. New versions download a released version and should keep working.
 
 ## References
 + Hannes M&uuml;hleisen, Thaer Samar, Jimmy Lin, Arjen de Vries (2014) Old Dogs Are Great at New Tricks: Column Stores for IR Prototyping. _SIGIR_
