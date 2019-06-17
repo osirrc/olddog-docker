@@ -22,10 +22,11 @@ for collection in args.json["collections"]:
     subprocess.run('monetdb create {}'.format(collection["name"]).split())
     subprocess.run('monetdb release {}'.format(collection["name"]).split())
 
+    # Updated manually for WAPO
     # Command need to be adapted based on a collection chosen to index
     subprocess.run("""
         java -cp anserini.jar io.anserini.index.IndexCollection
-            -collection TrecCollection -generator JsoupGenerator
+            -collection WashingtonPostCollection -generator WapoGenerator
             -threads 1 -index {0}
             -input {1}
             -storePositions -storeDocvectors -storeRawDocs
