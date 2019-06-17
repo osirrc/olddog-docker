@@ -8,8 +8,6 @@ import pymonetdb
 
 subprocess.run('monetdbd create /work/mydbfarm'.split())                        
 subprocess.run('monetdbd start /work/mydbfarm'.split())                         
-subprocess.run('monetdb create robust04'.split())                               
-subprocess.run('monetdb release robust04'.split())
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--json", type=json.loads, required=True, help="the args")
@@ -20,6 +18,11 @@ args, unknown = parser.parse_known_args()
 # Iterate over collections
 for collection in args.json["collections"]:
     
+    # TODO: do we really want collection specific databases?
+    subprocess.run('monetdb create {}'.format(collection["name"]).split())
+    subprocess.run('monetdb release {}'.format(collection["name"]).split())
+
+    # Command need to be adapted based on a collection chosen to index
     subprocess.run("""
         java -cp anserini.jar io.anserini.index.IndexCollection
             -collection TrecCollection -generator JsoupGenerator
@@ -43,7 +46,7 @@ for collection in args.json["collections"]:
 subprocess.run('rm -rf /work/{0}'.split())
 
 print("CREATE DATABASE")
-dbname = 'robust04'
+dbname = collection["name"]
 
 print("CREATE CONNECTION")
 connection = pymonetdb.connect(username='monetdb',
