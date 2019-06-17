@@ -13,6 +13,8 @@ RUN apt -y update
 RUN apt -qq -y install monetdb5-sql monetdb-client
 RUN pip3 install pymonetdb
 
+COPY monetdb /root/.monetdb
+
 # Copy scripts into place
 COPY init init
 COPY index index
