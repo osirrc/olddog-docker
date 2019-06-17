@@ -39,6 +39,12 @@ Index TREC disks 4/5 for `robust04`:
       --repo osirrc2019/olddog \
       --collections robust04=/vol/practica/IR/robust04=trectext
 
+Index WAPO for `core18`:
+
+     python3 run.py prepare \
+       --repo osirrc2019/wapodog \
+       --collections core18=/export/data/ir/WashingtonPost.arjen=json
+
 ### Search
 
 Running a TREC7 retrieval experiment:
@@ -60,6 +66,16 @@ Running a TREC8 retrieval experiment:
       --topic topics/topics.401-450.txt \
       --collection robust04 \
       --opts out_file_name="trec8"
+
+Running a CORE18 retrieval experiment:
+
+    python3 run.py search \
+       --repo osirrc2019/wapodog \
+       --output $(pwd)/out \
+       --qrels qrels/qrels.core18.txt \
+       --topic topics/topics.core18.txt \
+       --collection core18 \
+       --opts out_file_name="core18"
 
 ### SEE ALSO
 
