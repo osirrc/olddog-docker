@@ -39,8 +39,6 @@ Index TREC disks 4/5 for `robust04`:
       --repo osirrc2019/olddog \
       --collections robust04=/vol/practica/IR/robust04=trectext
 
-_TODO: move database load to this stage!_
-
 ### Search
 
 Running a TREC7 retrieval experiment:
