@@ -77,6 +77,8 @@ Running a CORE18 retrieval experiment:
        --collection core18 \
        --opts out_file_name="core18"
 
+_Needs to be checked._
+
 ### SEE ALSO
 
 [README](README.md)
