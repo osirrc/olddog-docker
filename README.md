@@ -105,4 +105,4 @@ We can not guarantee that version v0.1.0 still works. This version cloned the Ol
 ## Reviews
 
 + Documentation reviewed at commit [`d3a9750`](https://github.com/osirrc/olddog-docker/commit/d3a9750e74f815c12fe66dbd3e81e598b99ef9e5) (2019-06-13) by [Jimmy Lin](https://github.com/lintool/)
-+ Documentation reviewed at commit [`dd53191`](https://github.com/osirrc/olddog-docker/commit/9275f8b72b518fc3ae35906ce1d7059e6dd53191) (2019-06-17) by [r-clancy](https://github.com/r-clancy/).
++ Documentation reviewed at commit [`dd53191`](https://github.com/osirrc/olddog-docker/commit/9275f8b72b518fc3ae35906ce1d7059e6dd53191) (2019-06-17) by [Ryan Clancy](https://github.com/r-clancy/).
