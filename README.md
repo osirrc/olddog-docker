@@ -52,7 +52,7 @@ MAP                                     | BM25      |
 :---------------------------------------|-----------|
 [TREC 2004 Robust Track Topics](http://trec.nist.gov/data/robust/04.testset.gz)| 0.1771    |
 
-P@5                                     | BM25      | 
+P@30                                    | BM25      | 
 :---------------------------------------|-----------|
 [TREC 2004 Robust Track Topics](http://trec.nist.gov/data/robust/04.testset.gz)| 0.2578    |
 
@@ -64,7 +64,7 @@ MAP                                     | BM25      |
 :---------------------------------------|-----------|
 [TREC 2004 Robust Track Topics](http://trec.nist.gov/data/robust/04.testset.gz)| 0.2434    |
 
-P@5                                     | BM25      | 
+P@30                                    | BM25      | 
 :---------------------------------------|-----------|
 [TREC 2004 Robust Track Topics](http://trec.nist.gov/data/robust/04.testset.gz)| 0.2985    |
 
