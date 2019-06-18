@@ -14,6 +14,13 @@ args, unknown = parser.parse_known_args()
 topic_path = args.json['topic']['path']
 out_file_name = args.json['opts']['out_file_name']
 
+mode = ''
+try:
+    if args.json['opts']['mode'] == 'disjunctive' :
+        mode = '--disjunctive'
+except:
+    pass
+
 # Recreate socketfiles by creating new farm
 subprocess.run('monetdbd start /work/mydbfarm'.split())
 
@@ -21,4 +28,5 @@ subprocess.run("""
     python3 /work/olddog/src/main/python/search_collection.py
         --filename {}
         --output /output/{}
-""".format(topic_path, out_file_name).split())
+        {}
+""".format(topic_path, out_file_name, mode).split())
