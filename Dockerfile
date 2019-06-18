@@ -19,6 +19,7 @@ COPY monetdb /root/.monetdb
 COPY init init
 COPY index index
 COPY search search
+COPY interact interact
 
 # Set working directory
 WORKDIR /work
