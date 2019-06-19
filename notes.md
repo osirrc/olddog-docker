@@ -39,7 +39,25 @@ Index TREC disks 4/5 for `robust04`:
       --repo osirrc2019/olddog \
       --collections robust04=/vol/practica/IR/robust04=trectext
 
+### Interact
+
+The `jig` provides a separate _Interact_ mode, which is not strictly necessary to use a prepared image.
+
+
+     docker exec -it thirsty_payne mclient -d robust04
+
+
 ### Search
+
+Running a Robust04 retrieval experiment:
+
+    python3 run.py search \
+      --repo osirrc2019/olddog \
+      --output $(pwd)/out \
+      --qrels qrels/qrels.robust04.txt \
+      --topic topics/topics.robust04.txt \
+      --collection robust04 \
+      --opts out_file_name="robust04"
 
 Running a TREC7 retrieval experiment:
 
