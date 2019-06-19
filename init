@@ -1,11 +1,15 @@
 #!/bin/bash
-
 echo Downloading anserini.jar...
 wget -q http://central.maven.org/maven2/io/anserini/anserini/0.4.0/anserini-0.4.0-fatjar.jar -O anserini.jar
-git clone https://github.com/chriskamphuis/olddog.git
+echo Downloading OldDog...
+# wget -q https://github.com/Chriskamphuis/olddog/archive/v0.1.0.tar.gz
+# tar xzf v0.1.0.tar.gz
+# mv olddog-0.1.0 olddog
+git clone https://github.com/chriskamphuis/olddog
 cd olddog
 # REMOVE
 sed -i 's/robust04/core18/g' src/main/python/search_collection.py
 cp /topic_reader.py src/main/python
 # /REMOVE
-mvn clean package appassembler:assemble
+echo Building OldDog...
+mvn -q clean package appassembler:assemble

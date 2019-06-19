@@ -45,7 +45,24 @@ Index WAPO for `core18`:
        --repo osirrc2019/wapodog \
        --collections core18=/export/data/ir/WashingtonPost.arjen=json
 
+### Interact
+
+The `jig` provides a separate _Interact_ mode, which is not strictly necessary to use a prepared image.
+
+
+     docker exec -it thirsty_payne mclient -d robust04
+
 ### Search
+
+Running a Robust04 retrieval experiment:
+
+    python3 run.py search \
+      --repo osirrc2019/olddog \
+      --output $(pwd)/out \
+      --qrels qrels/qrels.robust04.txt \
+      --topic topics/topics.robust04.txt \
+      --collection robust04 \
+      --opts out_file_name="robust04" mode="disjunctive"
 
 Running a TREC7 retrieval experiment:
 
@@ -75,9 +92,15 @@ Running a CORE18 retrieval experiment:
        --qrels qrels/qrels.core18.txt \
        --topic topics/topics.core18.txt \
        --collection core18 \
-       --opts out_file_name="core18"
+       --opts out_file_name="core18-conj" mode="conjunctive"
 
-_Needs to be checked._
+    python3 run.py search \
+       --repo osirrc2019/wapodog \
+       --output $(pwd)/out \
+       --qrels qrels/qrels.core18.txt \
+       --topic topics/topics.core18.txt \
+       --collection core18 \
+       --opts out_file_name="core18-disj" mode="disjunctive"
 
 ### SEE ALSO
 

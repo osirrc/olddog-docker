@@ -1,13 +1,13 @@
 # OSIRRC Docker Image for OldDog
 
 [![Docker Build Status](https://img.shields.io/docker/cloud/build/osirrc2019/olddog.svg)](https://hub.docker.com/r/osirrc2019/olddog)
-[![DOI](https://zenodo.org/badge/180642691.svg)](https://zenodo.org/badge/latestdoi/180642691)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3247619.svg)](https://doi.org/10.5281/zenodo.3247619)
 
 [**Chris Kamphuis**](https://github.com/chriskamphuis) and [**Arjen de Vries**](https://github.com/arjenpdevries)
 
 This is the docker image for the [OldDog](https://github.com/chriskamphuis/olddog) project (based on work by M&uuml;hleisen et al.)  conforming to the [OSIRRC jig](https://github.com/osirrc/jig/) for the [Open-Source IR Replicability Challenge (OSIRRC) at SIGIR 2019](https://osirrc.github.io/osirrc2019/).
 This image is available on [Docker Hub](https://hub.docker.com/r/osirrc2019/olddog
-) has been tested with the jig at commit [efc94e9](https://github.com/osirrc/jig/commit/efc94e90962ab7368bb8dacbbda341a3f3409157) (13/07/2019).
+) has been tested with the jig at commit [ee62fa8](https://github.com/osirrc/jig/commit/ee62fa88a2bbfc38dfa0ac5c84c676028c73991e) (06/17/2019).
 
 + Supported test collections: `robust04`
 + Supported hooks: `init`, `index`, `search` 
@@ -18,7 +18,8 @@ The following `jig` command can be used to index TREC disks 4/5 for `robust04`:
 
 ```
 python run.py prepare \                                                         
-  --repo osirrc2019/olddog \                                                       
+  --repo osirrc2019/olddog \             
+  --tag v0.2.0 \
   --collections robust04=/path/to/disk45=trectext
 ```
 
@@ -27,6 +28,7 @@ The following `jig` command can be used to perform a retrieval run on the collec
 ```
 python run.py search \
   --repo osirrc2019/olddog \
+  --tag v0.2.0 \
   --output $(pwd)/out \
   --qrels qrels/qrels.robust04.txt \
   --topic topics/topics.robust04.txt \
@@ -48,11 +50,11 @@ The following results should be able to be re-produced using the jig search comm
 
 MAP                                     | BM25      | 
 :---------------------------------------|-----------|
-[TREC 2004 Robust Track Topics](http://trec.nist.gov/data/robust/04.testset.gz)| 0.1771    |
+[TREC 2004 Robust Track Topics](http://trec.nist.gov/data/robust/04.testset.gz)| 0.1736   |
 
-P@5                                     | BM25      | 
+P@30                                    | BM25      | 
 :---------------------------------------|-----------|
-[TREC 2004 Robust Track Topics](http://trec.nist.gov/data/robust/04.testset.gz)| 0.2578    |
+[TREC 2004 Robust Track Topics](http://trec.nist.gov/data/robust/04.testset.gz)| 0.2526   |
 
 _Note that the scores are lower than regular bm25 because of conjunctive query processing; all query terms need to appear in a document in order for the document to be considered relevant. Without this restriction you would find the results listed below. These can however as of now, not be produced with a jig command._
 
@@ -62,7 +64,7 @@ MAP                                     | BM25      |
 :---------------------------------------|-----------|
 [TREC 2004 Robust Track Topics](http://trec.nist.gov/data/robust/04.testset.gz)| 0.2434    |
 
-P@5                                     | BM25      | 
+P@30                                    | BM25      | 
 :---------------------------------------|-----------|
 [TREC 2004 Robust Track Topics](http://trec.nist.gov/data/robust/04.testset.gz)| 0.2985    |
 
@@ -90,6 +92,10 @@ At this point, `jig` takes a snapshot and the indexed collections are persisted 
 The `search` [script](search) reads a JSON string (see [here](https://github.com/osirrc/jig#search)) containing the collection name (to map back to the index directory from the `index` hook) and topic path, among other options.
 The retrieval run is performed and output is placed in `/output` for the `jig` to evaluate using `trec_eval`.
 
+## Notes
+- re:v0.1.0
+We can not guarantee that version v0.1.0 still works. This version cloned the OldDog github repository. New versions download a released version and should keep working.
+
 ## References
 + Hannes M&uuml;hleisen, Thaer Samar, Jimmy Lin, Arjen de Vries (2014) Old Dogs Are Great at New Tricks: Column Stores for IR Prototyping. _SIGIR_
 + Stephen E. Robertson, Steve Walker, Micheline Hancock-Beaulieu, Mike Gatford, and A. Payne. (1995) Okapi at TREC-4. _TREC_
@@ -98,5 +104,5 @@ The retrieval run is performed and output is placed in `/output` for the `jig` t
 
 ## Reviews
 
-+ Documentation reviewed at commit [d3a9750](https://github.com/osirrc/olddog-docker/commit/d3a9750e74f815c12fe66dbd3e81e598b99ef9e5) (6/13/2019) by [Jimmy Lin](https://github.com/lintool/)
-
++ Documentation reviewed at commit [`d3a9750`](https://github.com/osirrc/olddog-docker/commit/d3a9750e74f815c12fe66dbd3e81e598b99ef9e5) (2019-06-13) by [Jimmy Lin](https://github.com/lintool/)
++ Documentation reviewed at commit [`dd53191`](https://github.com/osirrc/olddog-docker/commit/9275f8b72b518fc3ae35906ce1d7059e6dd53191) (2019-06-17) by [Ryan Clancy](https://github.com/r-clancy/).
