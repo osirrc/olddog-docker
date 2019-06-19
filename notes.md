@@ -57,7 +57,7 @@ Running a Robust04 retrieval experiment:
       --qrels qrels/qrels.robust04.txt \
       --topic topics/topics.robust04.txt \
       --collection robust04 \
-      --opts out_file_name="robust04"
+      --opts out_file_name="robust04" mode="disjunctive"
 
 Running a TREC7 retrieval experiment:
 
