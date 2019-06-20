@@ -3,10 +3,9 @@
 echo Downloading anserini.jar...
 wget -q http://central.maven.org/maven2/io/anserini/anserini/0.4.0/anserini-0.4.0-fatjar.jar -O anserini.jar
 echo Downloading OldDog...
-# wget -q https://github.com/Chriskamphuis/olddog/archive/v0.1.0.tar.gz
-# tar xzf v0.1.0.tar.gz
-# mv olddog-0.1.0 olddog
-git clone https://github.com/chriskamphuis/olddog
+wget -q https://github.com/Chriskamphuis/olddog/archive/v0.2.0.tar.gz
+tar xzf v0.2.0.tar.gz
+mv olddog-0.2.0 olddog
 cd olddog
 echo Building OldDog...
 mvn -q clean package appassembler:assemble
