@@ -7,7 +7,6 @@ tar xzf v0.2.0.tar.gz
 mv olddog-0.2.0 olddog
 cd olddog
 # REMOVE
-sed -i 's/robust04/core18/g' src/main/python/search_collection.py
 cp /topic_reader.py src/main/python
 # /REMOVE
 echo Building OldDog...
