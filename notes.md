@@ -45,6 +45,8 @@ Index WAPO for `core18`:
        --repo osirrc2019/wapodog \
        --collections core18=/export/data/ir/WashingtonPost.v2/data=json
 
+_AFAIK, directories have to be group readable for `dockerfiles` for mounting the volumes to work successfully._
+
 ### Interact
 
 The `jig` provides a separate _Interact_ mode, which is not strictly necessary to use a prepared image.
