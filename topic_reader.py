@@ -20,7 +20,7 @@ class TopicReader:
             if not line:
                 break
 
-            if line.strip():
+            if not line.strip():
                 continue
             
             while line and not line.startswith('<top>'):
