@@ -9,7 +9,7 @@ This is the docker image for the [OldDog](https://github.com/chriskamphuis/olddo
 This image is available on [Docker Hub](https://hub.docker.com/r/osirrc2019/olddog
 ) has been tested with the jig at commit [f6c6ef4](https://github.com/osirrc/jig/commit/f6c6ef4823f07fedfe9bda719c4fb2cbd9cc6498) (06/20/2019).
 
-+ Supported test collections: `robust04`
++ Supported test collections: `robust04`, `core18`
 + Supported hooks: `init`, `index`, `search`, `interact`
 
 ## Quick Start
@@ -19,7 +19,7 @@ The following `jig` command can be used to index TREC disks 4/5 for `robust04`:
 ```
 python run.py prepare \                                                         
   --repo osirrc2019/olddog \             
-  --tag v0.3.0 \
+  --tag v1.0.0 \
   --collections robust04=/path/to/disk45=trectext
 ```
 
@@ -28,7 +28,7 @@ The following `jig` command can be used to perform a retrieval run on the collec
 ```
 python run.py search \
   --repo osirrc2019/olddog \
-  --tag v0.3.0 \
+  --tag v1.0.0 \
   --output $(pwd)/out \
   --qrels qrels/qrels.robust04.txt \
   --topic topics/topics.robust04.txt \
@@ -43,7 +43,7 @@ The following `jig` command can be used to start an interactive session:
 ```
 python run.py interact \
   --repo osirrc2019/olddog \
-  --tag v0.3.0 \
+  --tag v1.0.0 \
 ```  
 
 ## Retrieval Methods
@@ -65,6 +65,17 @@ MAP                                     | conjunctive BM25 | disjunctive BM25 |
 P@30                                    | conjunctive BM25 | disjunctive BM25 | 
 :---------------------------------------|------------------|------------------|
 [TREC 2004 Robust Track Topics](http://trec.nist.gov/data/robust/04.testset.gz)| 0.2526   | 0.2985    |
+
+### core18
+
+MAP                                     | conjunctive BM25 | disjunctive BM25 | 
+:---------------------------------------|------------------|------------------|
+[TREC 2018 Common Core Track Topics](https://trec.nist.gov/data/core/topics2018.txt)|  0.1802  |  0.2381  |
+
+P@30                                    | conjunctive BM25 | disjunctive BM25 | 
+:---------------------------------------|------------------|------------------|
+[TREC 2018 Common Core Track Topics](https://trec.nist.gov/data/core/topics2018.txt)|  0.3167  | 0.3313   |
+
 
 ## Implementation
 
