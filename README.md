@@ -104,7 +104,7 @@ We can not guarantee that version v0.1.0 still works. This version cloned the Ol
 + Hannes M&uuml;hleisen, Thaer Samar, Jimmy Lin, Arjen de Vries (2014) Old Dogs Are Great at New Tricks: Column Stores for IR Prototyping. _SIGIR_
 + Stephen E. Robertson, Steve Walker, Micheline Hancock-Beaulieu, Mike Gatford, and A. Payne. (1995) Okapi at TREC-4. _TREC_
 + Peilin Yang, Hui Fang, and Jimmy Lin (2017) Anserini: Enabling the Use of Lucene for Information Retrieval Research. _SIGIR_
-+ Boncz Peter (2002) Monet: A Next-Generation DBMS Kernel For Query-Intensive Applications. _PhD Thesis_
++ Peter Boncz (2002) Monet: A Next-Generation DBMS Kernel For Query-Intensive Applications. _PhD Thesis_
 
 ## Reviews
 
