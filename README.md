@@ -58,25 +58,13 @@ The following results should be able to be re-produced using the jig search comm
 
 ### robust04
 
-MAP                                     | BM25      | 
-:---------------------------------------|-----------|
-[TREC 2004 Robust Track Topics](http://trec.nist.gov/data/robust/04.testset.gz)| 0.1736   |
+MAP                                     | conjunctive BM25 | disjunctive BM25 | 
+:---------------------------------------|------------------|------------------|
+[TREC 2004 Robust Track Topics](http://trec.nist.gov/data/robust/04.testset.gz)| 0.1736   | 0.2434    |
 
-P@30                                    | BM25      | 
-:---------------------------------------|-----------|
-[TREC 2004 Robust Track Topics](http://trec.nist.gov/data/robust/04.testset.gz)| 0.2526   |
-
-_Note that the scores are lower than regular bm25 because of conjunctive query processing; all query terms need to appear in a document in order for the document to be considered relevant. Without this restriction you would find the results listed below._
-
-### robust04
-
-MAP                                     | BM25      | 
-:---------------------------------------|-----------|
-[TREC 2004 Robust Track Topics](http://trec.nist.gov/data/robust/04.testset.gz)| 0.2434    |
-
-P@30                                    | BM25      | 
-:---------------------------------------|-----------|
-[TREC 2004 Robust Track Topics](http://trec.nist.gov/data/robust/04.testset.gz)| 0.2985    |
+P@30                                    | conjunctive BM25 | disjunctive BM25 | 
+:---------------------------------------|------------------|------------------|
+[TREC 2004 Robust Track Topics](http://trec.nist.gov/data/robust/04.testset.gz)| 0.2526   | 0.2985    |
 
 ## Implementation
 
