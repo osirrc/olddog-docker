@@ -21,8 +21,5 @@ COPY index index
 COPY search search
 COPY interact interact
 
-# HACK FOR WAPO
-COPY topic_reader.py topic_reader.py
-
 # Set working directory
 WORKDIR /work

@@ -1,5 +1,4 @@
 #!/bin/sh
-pushd /export/data/ir/jig
 
 echo Indexing collections
 python3 run.py prepare \
@@ -42,4 +41,3 @@ python3 run.py search \
    --collection core18 \
    --opts out_file_name="core18-disj" mode="disjunctive"
 
-popd
