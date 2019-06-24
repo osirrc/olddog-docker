@@ -37,13 +37,13 @@ Index TREC disks 4/5 for `robust04`:
 
     python3 run.py prepare \
       --repo osirrc2019/olddog \
-      --collections robust04=/vol/practica/IR/robust04=trectext
+      --collections robust04=/export/data/ir/robust04=trectext
 
 Index WAPO for `core18`:
 
      python3 run.py prepare \
        --repo osirrc2019/wapodog \
-       --collections core18=/export/data/ir/WashingtonPost.arjen=json
+       --collections core18=/export/data/ir/WashingtonPost.v2/data=json
 
 ### Interact
 
