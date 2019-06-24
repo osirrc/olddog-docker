@@ -58,25 +58,13 @@ The following results should be able to be re-produced using the jig search comm
 
 ### robust04
 
-MAP                                     | BM25      | 
-:---------------------------------------|-----------|
-[TREC 2004 Robust Track Topics](http://trec.nist.gov/data/robust/04.testset.gz)| 0.1736   |
+MAP                                     | conjunctive BM25 | disjunctive BM25 | 
+:---------------------------------------|------------------|------------------|
+[TREC 2004 Robust Track Topics](http://trec.nist.gov/data/robust/04.testset.gz)| 0.1736   | 0.2434    |
 
-P@30                                    | BM25      | 
-:---------------------------------------|-----------|
-[TREC 2004 Robust Track Topics](http://trec.nist.gov/data/robust/04.testset.gz)| 0.2526   |
-
-_Note that the scores are lower than regular bm25 because of conjunctive query processing; all query terms need to appear in a document in order for the document to be considered relevant. Without this restriction you would find the results listed below._
-
-### robust04
-
-MAP                                     | BM25      | 
-:---------------------------------------|-----------|
-[TREC 2004 Robust Track Topics](http://trec.nist.gov/data/robust/04.testset.gz)| 0.2434    |
-
-P@30                                    | BM25      | 
-:---------------------------------------|-----------|
-[TREC 2004 Robust Track Topics](http://trec.nist.gov/data/robust/04.testset.gz)| 0.2985    |
+P@30                                    | conjunctive BM25 | disjunctive BM25 | 
+:---------------------------------------|------------------|------------------|
+[TREC 2004 Robust Track Topics](http://trec.nist.gov/data/robust/04.testset.gz)| 0.2526   | 0.2985    |
 
 ## Implementation
 
@@ -116,7 +104,7 @@ We can not guarantee that version v0.1.0 still works. This version cloned the Ol
 + Hannes M&uuml;hleisen, Thaer Samar, Jimmy Lin, Arjen de Vries (2014) Old Dogs Are Great at New Tricks: Column Stores for IR Prototyping. _SIGIR_
 + Stephen E. Robertson, Steve Walker, Micheline Hancock-Beaulieu, Mike Gatford, and A. Payne. (1995) Okapi at TREC-4. _TREC_
 + Peilin Yang, Hui Fang, and Jimmy Lin (2017) Anserini: Enabling the Use of Lucene for Information Retrieval Research. _SIGIR_
-+ Boncz Peter (2002) Monet: A Next-Generation DBMS Kernel For Query-Intensive Applications. _PhD Thesis_
++ Peter Boncz (2002) Monet: A Next-Generation DBMS Kernel For Query-Intensive Applications. _PhD Thesis_
 
 ## Reviews
 
