@@ -9,9 +9,9 @@ class TopicReader:
         self.filename = topics_file_name
         self.file = open(self.filename)
         self.topics = []
-        print("Read topics...")
+        print("Read topics...",flush=True)
         self._read_topics_file()
-        print("Preprocess topics...")
+        print("Preprocess topics...",flush=True)
         self._preprocess_titles()
 
     def _read_topics_file(self):
