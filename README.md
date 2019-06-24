@@ -1,16 +1,16 @@
 # OSIRRC Docker Image for OldDog
 
 [![Docker Build Status](https://img.shields.io/docker/cloud/build/osirrc2019/olddog.svg)](https://hub.docker.com/r/osirrc2019/olddog)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3247619.svg)](https://doi.org/10.5281/zenodo.3247619)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3250919.svg)](https://doi.org/10.5281/zenodo.3250919)
 
 [**Chris Kamphuis**](https://github.com/chriskamphuis) and [**Arjen de Vries**](https://github.com/arjenpdevries)
 
 This is the docker image for the [OldDog](https://github.com/chriskamphuis/olddog) project (based on work by M&uuml;hleisen et al.)  conforming to the [OSIRRC jig](https://github.com/osirrc/jig/) for the [Open-Source IR Replicability Challenge (OSIRRC) at SIGIR 2019](https://osirrc.github.io/osirrc2019/).
 This image is available on [Docker Hub](https://hub.docker.com/r/osirrc2019/olddog
-) has been tested with the jig at commit [ee62fa8](https://github.com/osirrc/jig/commit/ee62fa88a2bbfc38dfa0ac5c84c676028c73991e) (06/17/2019).
+) has been tested with the jig at commit [f6c6ef4](https://github.com/osirrc/jig/commit/f6c6ef4823f07fedfe9bda719c4fb2cbd9cc6498) (06/20/2019).
 
 + Supported test collections: `robust04`
-+ Supported hooks: `init`, `index`, `search` 
++ Supported hooks: `init`, `index`, `search`, `interact`
 
 ## Quick Start
 
@@ -19,7 +19,7 @@ The following `jig` command can be used to index TREC disks 4/5 for `robust04`:
 ```
 python run.py prepare \                                                         
   --repo osirrc2019/olddog \             
-  --tag v0.2.0 \
+  --tag v0.3.0 \
   --collections robust04=/path/to/disk45=trectext
 ```
 
@@ -28,7 +28,7 @@ The following `jig` command can be used to perform a retrieval run on the collec
 ```
 python run.py search \
   --repo osirrc2019/olddog \
-  --tag v0.2.0 \
+  --tag v0.3.0 \
   --output $(pwd)/out \
   --qrels qrels/qrels.robust04.txt \
   --topic topics/topics.robust04.txt \
@@ -36,11 +36,21 @@ python run.py search \
   --opts out_file_name="run.bm25.robust04"
 ```
 
+The `--opts` argument can be extended by adding `mode='disjunctive'` for disjunctive query processing.
+
+The following `jig` command can be used to start an interactive session:
+
+```
+python run.py interact \
+  --repo osirrc2019/olddog \
+  --tag v0.3.0 \
+```  
+
 ## Retrieval Methods
 
 The OldDog image supports the following retrieval models:
 
-+ **BM25** (conjunctive variant): k1=1.25, b=0.75 (Robertson et al., 1995) 
++ **BM25** (optionally conjunctive variant): k1=1.25, b=0.75 (Robertson et al., 1995) 
 
 ## Expected Results
 
@@ -56,7 +66,7 @@ P@30                                    | BM25      |
 :---------------------------------------|-----------|
 [TREC 2004 Robust Track Topics](http://trec.nist.gov/data/robust/04.testset.gz)| 0.2526   |
 
-_Note that the scores are lower than regular bm25 because of conjunctive query processing; all query terms need to appear in a document in order for the document to be considered relevant. Without this restriction you would find the results listed below. These can however as of now, not be produced with a jig command._
+_Note that the scores are lower than regular bm25 because of conjunctive query processing; all query terms need to appear in a document in order for the document to be considered relevant. Without this restriction you would find the results listed below._
 
 ### robust04
 
@@ -91,6 +101,12 @@ At this point, `jig` takes a snapshot and the indexed collections are persisted 
 ### search
 The `search` [script](search) reads a JSON string (see [here](https://github.com/osirrc/jig#search)) containing the collection name (to map back to the index directory from the `index` hook) and topic path, among other options.
 The retrieval run is performed and output is placed in `/output` for the `jig` to evaluate using `trec_eval`.
+
+### interact
+The `interact` [script](interact) starts the monetdb deamon. After this deamon has been started it is possible to open `mclient` to issue SQL queries. The following command can be used to open `mclient`:
+```
+docker exec -it $(docker ps -aql) mclient -d robust04
+```
 
 ## Notes
 - re:v0.1.0
