@@ -31,25 +31,50 @@ Build the OldDog docker image (locally):
     git clone git@github.com:osirrc2019/olddog-docker.git
     docker build -t osirrc2019/olddog .
 
-### Prepare
+### Prepare mode
+
+Index TREC Robust04 and Core18 in the same container:
+
+    python3 run.py prepare \
+      --repo osirrc2019/olddog \
+      --collections robust04=/export/data/ir/robust04=trectext core18=/export/data/ir/WashingtonPost.v2/data=json
+
+_Note: this creates two separate databases - for IR experiments, this is probably the desired setting, but for real life application, it is probably not._
 
 Index TREC disks 4/5 for `robust04`:
 
     python3 run.py prepare \
       --repo osirrc2019/olddog \
-      --collections robust04=/vol/practica/IR/robust04=trectext
+      --collections robust04=/export/data/ir/robust04=trectext
 
-### Interact
+Index WAPO for `core18`:
 
-The `jig` provides a separate _Interact_ mode, which is not strictly necessary to use a prepared image.
+     python3 run.py prepare \
+       --repo osirrc2019/olddog \
+       --collections core18=/export/data/ir/WashingtonPost.v2/data=json
 
+_AFAIK, directories have to be group readable for `dockerfiles` for mounting the volumes to work successfully._
 
-     docker exec -it thirsty_payne mclient -d robust04
+### Interact mode
 
+The `jig` provides a separate _Interact_ mode, in our case not really necessary though.
+Interactive mode is started as `python3 run.py interact --repo osirrc2019/olddog`, but you can also just start the container using `docker start`.
 
-### Search
+Interactive querying is then possible using `mclient`:
 
-Running a Robust04 retrieval experiment:
+     docker exec -it HASH mclient -d robust04
+
+and/or
+
+    docker exec -it HASH mclient -d core18
+
+depending on the collection indexed.
+
+### Search mode
+
+#### Robust04
+
+_Conjuctive:_
 
     python3 run.py search \
       --repo osirrc2019/olddog \
@@ -57,7 +82,41 @@ Running a Robust04 retrieval experiment:
       --qrels qrels/qrels.robust04.txt \
       --topic topics/topics.robust04.txt \
       --collection robust04 \
-      --opts out_file_name="robust04" mode="disjunctive"
+      --opts out_file_name="robust04-conj" mode="conjunctive"
+
+_Disjunctive:_
+
+    python3 run.py search \
+      --repo osirrc2019/olddog \
+      --output $(pwd)/out \
+      --qrels qrels/qrels.robust04.txt \
+      --topic topics/topics.robust04.txt \
+      --collection robust04 \
+      --opts out_file_name="robust04-disj" mode="disjunctive"
+
+#### CORE18
+
+_Conjunctive:_
+
+    python3 run.py search \
+       --repo osirrc2019/olddog \
+       --output $(pwd)/out \
+       --qrels qrels/qrels.core18.txt \
+       --topic topics/topics.core18.txt \
+       --collection core18 \
+       --opts out_file_name="core18-conj" mode="conjunctive"
+
+_Disjunctive:_
+
+    python3 run.py search \
+       --repo osirrc2019/olddog \
+       --output $(pwd)/out \
+       --qrels qrels/qrels.core18.txt \
+       --topic topics/topics.core18.txt \
+       --collection core18 \
+       --opts out_file_name="core18-disj" mode="disjunctive"
+
+#### Other
 
 Running a TREC7 retrieval experiment:
 

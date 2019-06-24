@@ -1,5 +1,4 @@
 #!/bin/bash
-
 echo Downloading anserini.jar...
 wget -q http://central.maven.org/maven2/io/anserini/anserini/0.4.0/anserini-0.4.0-fatjar.jar -O anserini.jar
 echo Downloading OldDog...
@@ -7,5 +6,8 @@ wget -q https://github.com/Chriskamphuis/olddog/archive/v0.2.0.tar.gz
 tar xzf v0.2.0.tar.gz
 mv olddog-0.2.0 olddog
 cd olddog
+# REMOVE
+cp /topic_reader.py src/main/python
+# /REMOVE
 echo Building OldDog...
 mvn -q clean package appassembler:assemble
