@@ -32,18 +32,16 @@ class TopicReader:
                 line = self.file.readline()
             topic_no = int(re.search('Number: (\d+)', line.strip()).group(1))
             
-            # print("Parsing topic {}".format(topic_no))
+            print("Parsing topic {}".format(topic_no),flush=True)
 
             while not line.startswith('<title>'):
                 line = self.file.readline()
-            # Robust04 specific:
-            # topic_title = line.strip()[8:]
 
-            # Core18 specific - fix:
-            topic_title = ""
-            
+            # Robust04 specific:
+            topic_title = line.strip()[8:]
+
             line = self.file.readline().strip()
-            while not line.startswith('</title>'):
+            while not line.startswith('</title>') and not line.startswith('<desc>'):
                 topic_title += line
                 line = self.file.readline().strip()
             
@@ -52,7 +50,7 @@ class TopicReader:
             
             topic_desc = ""
             line = self.file.readline().strip()            
-            while not line.startswith('</desc>'):
+            while not line.startswith('</desc>') and not line.startswith('<narr>'):
                 topic_desc += line
                 line = self.file.readline().strip()
 
@@ -62,7 +60,7 @@ class TopicReader:
             topic_nar = ""
             line = self.file.readline().strip()
             
-            while not line.startswith('</narr>'):
+            while not line.startswith('</narr>') and not line.startswith('</top>'):
                 topic_nar += line
                 line = self.file.readline().strip()
                 

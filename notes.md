@@ -49,14 +49,24 @@ _AFAIK, directories have to be group readable for `dockerfiles` for mounting the
 
 ### Interact
 
-The `jig` provides a separate _Interact_ mode, which is not strictly necessary to use a prepared image.
+The `jig` provides a separate _Interact_ mode, in our case not really necessary though.
+Interactive mode is started as `python3 run.py interact --repo osirrc2019/wapodog`, but you can also just start the container using `docker start`.
 
+Interactive querying is then possible using `mclient`:
 
-     docker exec -it thirsty_payne mclient -d robust04
+     docker exec -it HASH mclient -d robust04
+
+and/or
+
+    docker exec -it HASH mclient -d core18
+
+depending on the collection indexed.
 
 ### Search
 
 Running a Robust04 retrieval experiment:
+
+_Disjunctive:_
 
     python3 run.py search \
       --repo osirrc2019/olddog \
@@ -64,7 +74,7 @@ Running a Robust04 retrieval experiment:
       --qrels qrels/qrels.robust04.txt \
       --topic topics/topics.robust04.txt \
       --collection robust04 \
-      --opts out_file_name="robust04" mode="disjunctive"
+      --opts out_file_name="robust04-disj" mode="disjunctive"
 
 Running a TREC7 retrieval experiment:
 
@@ -88,6 +98,8 @@ Running a TREC8 retrieval experiment:
 
 Running a CORE18 retrieval experiment:
 
+_Conjunctive:_
+
     python3 run.py search \
        --repo osirrc2019/wapodog \
        --output $(pwd)/out \
@@ -95,6 +107,8 @@ Running a CORE18 retrieval experiment:
        --topic topics/topics.core18.txt \
        --collection core18 \
        --opts out_file_name="core18-conj" mode="conjunctive"
+
+_Disjunctive:_
 
     python3 run.py search \
        --repo osirrc2019/wapodog \
