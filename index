@@ -62,9 +62,9 @@ cursor.execute("CREATE TABLE dict (termid INT, term STRING, df INT)")
 cursor.execute("CREATE TABLE terms (termid INT, docid INT, count INT)")
 
 print("LOAD DATA")
-cursor.execute("COPY INTO docs FROM '/tmp/docs'") 
-cursor.execute("COPY INTO dict FROM '/tmp/dict'")
-cursor.execute("COPY INTO terms FROM '/tmp/terms'")
+cursor.execute("COPY INTO docs FROM '/tmp/docs' using delimiters '|', '\n', ''") 
+cursor.execute("COPY INTO dict FROM '/tmp/dict' using delimiters '|', '\n', ''")
+cursor.execute("COPY INTO terms FROM '/tmp/terms' using delimiters '|', '\n', ''")
 
 print("DATA LOADED")
 connection.commit()
