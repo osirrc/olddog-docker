@@ -7,7 +7,7 @@
 
 This is the docker image for the [OldDog](https://github.com/chriskamphuis/olddog) project (based on work by M&uuml;hleisen et al.)  conforming to the [OSIRRC jig](https://github.com/osirrc/jig/) for the [Open-Source IR Replicability Challenge (OSIRRC) at SIGIR 2019](https://osirrc.github.io/osirrc2019/).
 This image is available on [Docker Hub](https://hub.docker.com/r/osirrc2019/olddog
-) has been tested with the jig at commit [f6c6ef4](https://github.com/osirrc/jig/commit/f6c6ef4823f07fedfe9bda719c4fb2cbd9cc6498) (06/20/2019).
+) has been tested with the jig at commit [e51fe7a](https://github.com/osirrc/jig/commit/e51fe7aa8e128052244ed666e4b955a127441f9b) (06/25/2019).
 
 + Supported test collections: `robust04`, `core18`
 + Supported hooks: `init`, `index`, `search`, `interact`
@@ -87,13 +87,14 @@ The `Dockerfile` installs dependencies (`python3`, `monetdb`, etc.), copies scri
 
 ### init
 
-The `init` [script](init) is a bash script (via the `#!/bin/bash` she-bang) that invokes `wget` to download an `anserini` JAR from Maven Central. Then it clones the `OldDog` project from github, which then is build using maven.
+The `init` [script](init) is a bash script (via the `#!/bin/bash` she-bang) that invokes `wget` to download an `anserini` JAR from Maven Central. Then it downloads the `OldDog` project from github, which then is build using maven.
 
 ### index
 The `index` Python [script](index) (via the `#!/usr/bin/python3` she-bang) reads a JSON string (see [here](https://github.com/osirrc/jig#index)) containing at least one collection to index (including the name, path, and format).
 The collection is indexed using Anserini (Yang et al., 2017) and placed in a directory, with the same name as the collection, in the working dir (i.e., `/work/robust04`).
 After the Lucene index has been created, the OldDog software uses this index to creates csv files from it that can be loaded in the monetdb (Boncz, 2002)  column store.
 A monetDB databse is created and the csv-files are loaded into the database.
+It is possible to index muliple collection using one container.
 This is followed by removing the Lucene index so commiting the image takes less time.
 At this point, `jig` takes a snapshot and the indexed collections are persisted for the `search` hook.
 
