@@ -17,7 +17,7 @@ This image is available on [Docker Hub](https://hub.docker.com/r/osirrc2019/oldd
 The following `jig` command can be used to index TREC disks 4/5 for `robust04`:
 
 ```
-python run.py prepare \            
+python run.py prepare \
   --repo osirrc2019/olddog \
   --tag v1.0.0 \
   --collections robust04=/path/to/disk45=trectext
