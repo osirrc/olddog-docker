@@ -1,7 +1,7 @@
 # OSIRRC Docker Image for OldDog
 
 [![Docker Build Status](https://img.shields.io/docker/cloud/build/osirrc2019/olddog.svg)](https://hub.docker.com/r/osirrc2019/olddog)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3250919.svg)](https://doi.org/10.5281/zenodo.3250919)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3255060.svg)](https://doi.org/10.5281/zenodo.3255060)
 
 [**Chris Kamphuis**](https://github.com/chriskamphuis) and [**Arjen de Vries**](https://github.com/arjenpdevries)
 
