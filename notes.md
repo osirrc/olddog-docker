@@ -62,11 +62,11 @@ Interactive mode is started as `python3 run.py interact --repo osirrc2019/olddog
 
 Interactive querying is then possible using `mclient`:
 
-     docker exec -it HASH mclient -d robust04
+    docker exec -it $(docker ps - aql) mclient -d robust04
 
 and/or
 
-    docker exec -it HASH mclient -d core18
+    docker exec -it $(docker ps - aql) mclient -d core18
 
 depending on the collection indexed.
 
