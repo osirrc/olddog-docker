@@ -50,7 +50,7 @@ python run.py interact \
 
 The OldDog image supports the following retrieval models:
 
-+ **BM25** (optionally conjunctive variant): k1=1.25, b=0.75 (Robertson et al., 1995) 
++ **BM25** (optionally conjunctive variant): k1=1.2, b=0.75 (Robertson et al., 1995) 
 
 ## Expected Results
 
